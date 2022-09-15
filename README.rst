@@ -33,10 +33,6 @@ This is easily achieved by downloading
 or individual libraries can be installed using
 `circup <https://github.com/adafruit/circup>`_.
 
-Installing from PyPI
-=====================
-.. note:: This library is not available on PyPI.
-
 
 Installing to a Connected CircuitPython Device with Circup
 ==========================================================
