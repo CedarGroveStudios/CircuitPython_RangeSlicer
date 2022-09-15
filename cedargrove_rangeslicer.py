@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: Copyright (c) 2020, 2021, 2022 JG for Cedar Grove Maker Studios
+# SPDX-FileCopyrightText: Copyright (c) 2022 JG for Cedar Grove Maker Studios
 #
 # SPDX-License-Identifier: MIT
 """
 `cedargrove_rangeslicer`
 ================================================================================
-cedargrove_rangeslicer.py 2022-09-14 v3.10 05:58PM
+cedargrove_rangeslicer.py 2022-09-14 v3.10 07:29PM
 RangeSlicer is a CircuitPython class for scaling a range of input values into
 indexed/quantized output values. Output slice hysteresis is used to provide
 dead-zone squelching.
@@ -24,7 +24,7 @@ __repo__ = "https://github.com/CedarGroveStudios/Range_Slicer.git"
 
 # pylint: disable=too-many-instance-attributes
 class Slicer:
-    """The RangeSlicer class."""
+    """The primary RangeSlicer class."""
 
     # pylint: disable=too-many-arguments
     def __init__(
@@ -69,9 +69,10 @@ class Slicer:
         self._hyst_factor = hyst_factor  # Hysteresis factor parameter
         self._out_integer = out_integer  # Index output data type parameter
 
-        self._in_zone = None  # Define variable for later use in the class
-        self._index = None  # Define variable for later use in the class
-        self._old_idx_mapped = None  # Define variable for later use in the class
+        # Define variables for later us in the class
+        self._in_zone = None
+        self._index = None
+        self._old_idx_mapped = None
 
         self._update_param()  # Establish the parameters for range_slicer helper
 
@@ -133,9 +134,7 @@ class Slicer:
     @slice.setter
     def slice(self, size=1.0):
         if size <= 0:
-            raise RuntimeError(
-                "Setter: Invalid Slice setting; value must be greater than zero"
-            )
+            raise RuntimeError("Invalid Slice value; must be greater than zero")
         self._slice = size
         self._update_param()  # Update the parameters for range_slicer helper
 
@@ -170,12 +169,13 @@ class Slicer:
                 - ((idx_mapped - self._out_span_max) % self._slice)
             ) / self._slice
             slice_thresh = (slice_num * self._slice) + self._out_span_max
+
         upper_zone_limit = slice_thresh + (2 * self._hyst_band)
 
-        # if idx_mapped <= upper_zone_limit and idx_mapped >= slice_thresh:
         if upper_zone_limit >= idx_mapped >= slice_thresh:
             if self._in_zone != slice_thresh:
                 self._in_zone = slice_thresh
+
                 if idx_mapped > self._old_idx_mapped:
                     self._index = slice_thresh - self._slice
                 if idx_mapped < self._old_idx_mapped:
@@ -183,17 +183,15 @@ class Slicer:
         else:
             self._in_zone = None
             self._index = slice_thresh
+
         if self._out_span_min <= self._out_span_max:
             self._index = max(min(self._index, self._out_span_max), self._out_span_min)
         else:
             self._index = min(max(self._index, self._out_span_max), self._out_span_min)
-        """if self._index != self._old_idx_mapped:
-            change_flag = True
-        else:
-            change_flag = False"""
-        change_flag = bool(self._index != self._old_idx_mapped)
 
+        change_flag = bool(self._index != self._old_idx_mapped)
         self._old_idx_mapped = idx_mapped
+
         if self._out_integer:
             return int(self._index), change_flag
         return self._index, change_flag
@@ -201,6 +199,7 @@ class Slicer:
     def _mapper(self, map_in):
         """_mapper: Determines the linear output value based on the input value
         using the linear slope-intercept form y = mx + b ."""
+
         if (self._in_min == self._in_max) or (self._out_span_min == self._out_span_max):
             return self._out_span_min
         mapped = (
@@ -211,15 +210,9 @@ class Slicer:
             return max(min(mapped, self._out_span_max), self._out_span_min)
         return min(max(mapped, self._out_span_max), self._out_span_min)
 
-    """def _sign(self, x):
-        "Determines the sign of a numeric value. Zero is evaluated as a
-        positive value."
-        if x >= 0:
-            return 1
-        return -1"""
-
     def _update_param(self):
         """Recalculate spans and hysteresis value when parameters change."""
+
         # Update output span parameters
         if self._out_min > self._out_max:
             self._out_span_min = self._out_min + self._slice
@@ -234,17 +227,14 @@ class Slicer:
         else:
             self._out_span_dir = -1
 
-        # self._out_span_dir = self._sign(self._out_span)
-
         # Update slice size parameter
         if self._slice <= 0:
-            raise RuntimeError(
-                "_update_param: Invalid Slice value; must be greater than zero"
-            )
-        # Update hysteresis parameters: calculate hysteresis band size,
-        #   reset in-zone state
+            raise RuntimeError("Invalid Slice value; must be greater than zero")
+
+        # Update hysteresis band size; reset in-zone state
         self._hyst_band = self._hyst_factor * self._slice
         self._in_zone = None
+
         # Update index parameters
         self._index = 0
         self._old_idx_mapped = 0
