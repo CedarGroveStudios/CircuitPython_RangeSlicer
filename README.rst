@@ -31,35 +31,12 @@ Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
 or individual libraries can be installed using
-`circup <https://github.com/adafruit/circup>`_.Installing from PyPI
+`circup <https://github.com/adafruit/circup>`_.
+
+Installing from PyPI
 =====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
+.. note:: This library is not available on PyPI.
 
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
-
-On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
-PyPI <https://pypi.org/project/Cedargrove-circuitpython-rangeslicer/>`_.
-To install for current user:
-
-.. code-block:: shell
-
-    pip3 install Cedargrove-circuitpython-rangeslicer
-
-To install system-wide (this may be required in some cases):
-
-.. code-block:: shell
-
-    sudo pip3 install Cedargrove-circuitpython-rangeslicer
-
-To install in a virtual environment in your current project:
-
-.. code-block:: shell
-
-    mkdir project-name && cd project-name
-    python3 -m venv .venv
-    source .env/bin/activate
-    pip3 install Cedargrove-circuitpython-rangeslicer
 
 Installing to a Connected CircuitPython Device with Circup
 ==========================================================
@@ -87,15 +64,44 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+.. code-block:: Python
+
+    """Reads two potentiometer inputs and produces -1.0 to +1.0 normalized outputs,
+    one with an inverted output range."""
+
+    import time
+    import board
+    import cedargrove_range_slicer as rs
+    from analogio import AnalogIn
+    print("Two Normalized Outputs: Range_Slicer example 01")
+
+    """Establish range_slicer instances, one for each analog potentiometer
+    input. Input ranges are adjusted for unique potentiometer inaccuracies and
+    noise. Slice size divides the output into 10 slices. Hysteresis factor is
+    25% of a slice."""
+
+    ctrl_0 = rs.Slicer(200, 65335, -1.0, +1.0, 0.2, 0.25)
+    ctrl_1 = rs.Slicer(375, 65520, +1.0, -1.0, 0.2, 0.25)
+
+    # establish analog inputs
+    pot_0 = AnalogIn(board.A0)
+    pot_1 = AnalogIn(board.A1)
+
+    while True:  # read potentiometer values
+        control_0 = pot_0.value
+        control_1 = pot_1.value
+
+        # calculate output values and print (or plot in Mu)
+        out_0 = ctrl_0.range_slicer(control_0)
+        out_1 = ctrl_1.range_slicer(control_1)
+        print( (control_0 / 65535, control_1 / 65535, out_0, out_1) )
+
+        time.sleep(0.1)  # pause for 0.1 second
+
 
 Documentation
 =============
-API documentation for this library can be found on `Read the Docs <https://circuitpython-rangeslicer.readthedocs.io/>`_.
-
-For information on building library documentation, please check out
-`this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
+`RangeSlicer CircuitPython Driver API Class Description <https://github.com/CedarGroveStudios/Cedargrove_CircuitPython_RangeSlicer/blob/media/pseudo_readthedocs_cedargrove_range_slicer.pdf>`_
 
 Contributing
 ============
