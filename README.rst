@@ -18,7 +18,7 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A CircuitPython class for scaling a range of input values into indexed/quantized output values. Adjustable output slice hysteresis is used to provide dead-zone squelching.
+Range_Slicer is a general-purpose analog value converter that linearly scales the input then quantizes it into a collection of precise output slice values. The class detects input value changes and applies selectable hysteresis when slice edge thresholds are reached to eliminate dead-zone noise issues without filtering delays. Applications include converting rotary knob position to discrete ranges of MIDI values, analog signal noise processing, level detection, rotary switch emulation, and signal display.
 
 
 Dependencies
