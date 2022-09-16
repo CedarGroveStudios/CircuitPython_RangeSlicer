@@ -18,7 +18,7 @@ Implementation Notes
     https://github.com/adafruit/circuitpython/releases
 """
 
-__version__ = "0.0.0-auto.0"
+__version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/CedarGroveStudios/Range_Slicer.git"
 
 
