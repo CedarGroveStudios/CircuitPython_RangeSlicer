@@ -18,7 +18,10 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-Range_Slicer is a general-purpose CircuitPython analog value converter that linearly scales the input then quantizes it into a collection of precise output slice values. The class detects input value changes and applies selectable hysteresis when slice edge thresholds are reached to eliminate dead-zone noise issues without filtering delays. Applications include converting rotary knob position to discrete ranges of MIDI values, analog signal noise processing, level detection, rotary switch emulation, and signal display.
+RangeSlicer is a general-purpose CircuitPython analog value converter that linearly scales the input then quantizes it into a collection of precise output slice values. The class detects input value changes and applies selectable hysteresis when slice edge thresholds are reached to eliminate dead-zone noise issues without filtering delays. Applications include converting rotary knob position to discrete ranges of MIDI values, analog signal noise processing, level detection, rotary switch emulation, and signal display.
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer/blob/master/media/range_slicer_models.png
+   :alt: RangeSlicer Models
 
 
 Dependencies
@@ -69,7 +72,7 @@ Usage Example
     import board
     import cedargrove_range_slicer as rs
     from analogio import AnalogIn
-    print("Two Normalized Outputs: Range_Slicer example 01")
+    print("Two Normalized Outputs: RangeSlicer example 01")
 
     """Establish range_slicer instances, one for each analog potentiometer
     input. Input ranges are adjusted for unique potentiometer inaccuracies and
