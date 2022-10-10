@@ -21,7 +21,14 @@ Introduction
 RangeSlicer is a general-purpose CircuitPython analog value converter that linearly scales the input then quantizes it into a collection of precise output slice values. The class detects input value changes and applies selectable hysteresis when slice edge thresholds are reached to eliminate dead-zone noise issues without filtering delays. Applications include converting rotary knob position to discrete ranges of MIDI values, analog signal noise processing, level detection, rotary switch emulation, and signal display.
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer/blob/master/media/range_slicer_models.png
-   :alt: RangeSlicer Models
+   :alt: RangeSlicer Signal Models
+   
+   
+The effect of using hysteresis to clean up a noisy signal:
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer/blob/master/media/range_slicer_noise_models.png
+   :alt: RangeSlicer Noise Models
+
 
 
 Dependencies
