@@ -22,8 +22,8 @@ RangeSlicer is a general-purpose CircuitPython analog value converter that linea
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer/blob/master/media/range_slicer_models.png
    :alt: RangeSlicer Signal Models
-   
-   
+
+
 The effect of using hysteresis to clean up a noisy signal:
 
 .. image:: https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer/blob/master/media/range_slicer_noise_models.png
