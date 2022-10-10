@@ -52,7 +52,7 @@ following command to install:
 
 .. code-block:: shell
 
-    circup install rangeslicer
+    circup install cedargrove_rangeslicer
 
 Or the following command to update an existing version:
 
