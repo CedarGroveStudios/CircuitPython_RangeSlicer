@@ -19,7 +19,7 @@ Implementation Notes
 """
 
 __version__ = "0.0.0+auto.0"
-__repo__ = "https://github.com/CedarGroveStudios/Range_Slicer.git"
+__repo__ = "https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer.git"
 
 
 # pylint: disable=too-many-instance-attributes
