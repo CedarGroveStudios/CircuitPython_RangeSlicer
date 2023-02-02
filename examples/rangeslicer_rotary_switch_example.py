@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 """
-`rangeslicer_rotary_switch_example2`
+`rangeslicer_rotary_switch_example`
 ================================================================================
 rangeslicer_rotary_switch_example.py 2022-08-16 v3.01 02:38PM
 
