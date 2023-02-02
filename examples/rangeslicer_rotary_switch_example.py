@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 """
-`range_slicer_example_02`
+`rangeslicer_rotary_switch_example2`
 ================================================================================
-range_slicer_example_02.py 2022-08-16 v3.01 02:38PM
+rangeslicer_rotary_switch_example.py 2022-08-16 v3.01 02:38PM
 
 Reads one potentiometer input and produces an indexed output,
 simulating a 5-position rotary selection switch.
