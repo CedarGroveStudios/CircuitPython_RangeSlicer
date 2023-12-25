@@ -77,7 +77,7 @@ Usage Example
 
     import time
     import board
-    import cedargrove_range_slicer as rs
+    import cedargrove_rangeslicer as rs
     from analogio import AnalogIn
     print("Two Normalized Outputs: RangeSlicer example 01")
 
