@@ -24,10 +24,10 @@ __repo__ = "https://github.com/CedarGroveStudios/CircuitPython/RangeSlicer.git"
 
 import time
 import board
-import cedargrove_range_slicer as rs
+import cedargrove_rangeslicer as rs
 from analogio import AnalogIn
 
-print("Two Normalized Outputs: Range_Slicer example 01")
+print("Two Normalized Outputs: RangeSlicer example 01")
 
 """Establish range_slicer instances, one for each analog potentiometer
 input. Input ranges are adjusted for unique potentiometer inaccuracies and
