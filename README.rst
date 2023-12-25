@@ -77,8 +77,9 @@ Usage Example
 
     import time
     import board
-    import cedargrove_range_slicer as rs
     from analogio import AnalogIn
+    import cedargrove_rangeslicer as rs
+
     print("Two Normalized Outputs: RangeSlicer example 01")
 
     """Establish range_slicer instances, one for each analog potentiometer
