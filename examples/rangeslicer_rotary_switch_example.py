@@ -24,9 +24,9 @@ __repo__ = "https://github.com/CedarGroveStudios/CircuitPython/RangeSlicer.git"
 
 import time
 import board
-import cedargrove_rangeslicer as rs
 from analogio import AnalogIn
 from digitalio import DigitalInOut, Direction
+import cedargrove_rangeslicer as rs
 
 print("Rotary Switch: RangeSlicer example 02")
 
