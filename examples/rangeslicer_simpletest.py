@@ -24,8 +24,8 @@ __repo__ = "https://github.com/CedarGroveStudios/CircuitPython/RangeSlicer.git"
 
 import time
 import board
-import cedargrove_rangeslicer as rs
 from analogio import AnalogIn
+import cedargrove_rangeslicer as rs
 
 print("Two Normalized Outputs: RangeSlicer example 01")
 
