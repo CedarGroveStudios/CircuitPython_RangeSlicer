@@ -24,11 +24,11 @@ __repo__ = "https://github.com/CedarGroveStudios/CircuitPython/RangeSlicer.git"
 
 import time
 import board
-import cedargrove_range_slicer as rs
+import cedargrove_rangeslicer as rs
 from analogio import AnalogIn
 from digitalio import DigitalInOut, Direction
 
-print("Rotary Switch: Range_Slicer example 02")
+print("Rotary Switch: RangeSlicer example 02")
 
 """Establish a range_slicer instance for the analog potentiometer input.
 Input range is adjusted for unique potentiometer inaccuracies and noise.
