@@ -108,7 +108,7 @@ Usage Example
 
 Documentation
 =============
-`RangeSlicer CircuitPython Driver API Class Description <https://github.com/CedarGroveStudios/Cedargrove_CircuitPython_RangeSlicer/blob/media/pseudo_readthedocs_cedargrove_range_slicer.pdf>`_
+`RangeSlicer CircuitPython Driver API Class Description <https://github.com/CedarGroveStudios/CircuitPython_RangeSlicer/blob/master/media/pseudo_readthedocs_rangeslicer.pdf>`_
 
 Contributing
 ============
