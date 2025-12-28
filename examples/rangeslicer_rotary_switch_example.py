@@ -52,7 +52,7 @@ old_index = -1  # initialize the switch index value
 
 while True:
     new_index = int(
-        pot.range_slicer(pot_input.value)
+        pot.range_slicer(pot_input.value)[0]
     )  # read pot and determine the index value
 
     if new_index != old_index:  # compare old and new; did the index value change?
