@@ -46,8 +46,8 @@ while True:  # read potentiometer values
     control_1 = pot_1.value
 
     # calculate output values and print (or plot in Mu)
-    out_0 = ctrl_0.range_slicer(control_0)
-    out_1 = ctrl_1.range_slicer(control_1)
+    out_0 = ctrl_0.range_slicer(control_0)[0]
+    out_1 = ctrl_1.range_slicer(control_1)[0]
     print((control_0 / 65535, control_1 / 65535, out_0, out_1))
 
     time.sleep(0.1)  # pause for 0.1 second
